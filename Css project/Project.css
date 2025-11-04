@@ -1,0 +1,37 @@
+h2 {
+    color: brown;
+}
+h4 {
+    color: brown;
+    text-align: right;
+}
+span {
+    color: darkorange;
+}
+#pets {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+img {
+    width: 100%;
+    border-radius: 20px;
+}
+.card {
+    max-width: 375px; /* Adjusted for responsiveness */
+    border: solid 2px black;
+    padding: 10px;
+    margin: 10px auto; /* Centering cards */
+    border-radius: 20px;
+}
+
+/* Media query for iPhone SE (375px)  */
+@media (max-width: 375px) {
+    #pets {
+        flex-direction: column; /* Stack items */
+        align-items: center; /* Center content */
+    }
+    .card {
+        width: 90%; /* Ensure proper scaling */
+    }
+}

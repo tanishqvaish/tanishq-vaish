@@ -1,0 +1,29 @@
+.content {
+    padding: 10px;
+    margin: 10px;
+    font-weight: 500;
+}
+
+.one {
+    background-color: aqua;
+    height: 200px;
+    width: 200px;
+    border: solid 2px black;
+    z-index: 1;
+    position: relative;
+}
+.two {
+    background-color: darkred;
+    height: 200px;
+    width: 200px;
+    border: solid 2px black;
+    position: relative;
+    bottom: 50px;
+    z-index: 0;
+}
+.three {
+    background-color: pink;
+    height: 200px;
+    width: 200px;
+    border: solid 2px black;
+}
