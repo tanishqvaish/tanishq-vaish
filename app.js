@@ -4,6 +4,9 @@ if (process.env.NODE_ENV != "production") {
 
 console.log(process.env.CLOUD_API_KEY);
 
+console.log("DB URL:", process.env.ATLASDB_URL);
+console.log("SECRET:", process.env.SECRET);
+
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path"); 
@@ -27,7 +30,6 @@ const userRouter = require("./routes/user.js");
 
 const app = express();
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/Wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
 
 
@@ -42,8 +44,6 @@ main()
   .catch((err) => console.log(err));
 
 
-// ---------------- 🔥 IMPORTANT FIX ----------------
-// MUST be immediately after app creation
 app.use(express.static(path.join(__dirname, "public")));
 
 
@@ -58,6 +58,8 @@ app.use(methodOverride("_method"));
 
 
 // ---------------- SESSION ----------------
+
+const sessionSecret = process.env.SECRET || "fallbacksecret";
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,
@@ -74,7 +76,7 @@ store.on("error", (err) => {
 
 const sessionOptions = {
   store,
-  secret: process.env.SECRET,
+  secret: sessionSecret, 
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -142,6 +144,8 @@ app.use((err, req, res, next) => {
 
 // ---------------- SERVER ----------------
 
-app.listen(8080, () => {
-  console.log("Server is running on port 8080");
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
