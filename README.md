@@ -1,2 +1,0 @@
-# tanishq-vaish
-hello world
