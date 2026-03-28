@@ -104,9 +104,9 @@
               <!-- All Reviews -->
 
               <div class="d-flex flex-wrap">
+                <h4>All Reviews</h4>
                 <% for (let review of listing.reviews) { %>
                   <div class="card m-2 p-3" style="width: 18rem;">
-                    <h4>All Reviews</h4>
                     <br>
                     <h5>@<%= review.author ? review.author.username : "Anonymous" %>
                     </h5>
